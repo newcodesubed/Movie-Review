@@ -116,11 +116,89 @@
     justify-content: center;
     align-items: center;
     padding: 0.8rem 2rem;
-    border-radius: 20px;
+    border-radius: 25px;
     cursor: pointer;
-    width: 150px;
-    color: black;
+    width: 200px;
     font-weight: bold;
+    border: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    gap: 8px;
+    text-shadow: none;
+}
+
+.movie__buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.movie__favoriteButton {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.movie__favoriteButton:hover {
+    background: linear-gradient(135deg, #ee5a52, #dc4c64);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+.movie__favoriteButton--active {
+    background: linear-gradient(135deg, #ff4757, #c44569);
+    color: white;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+}
+
+.movie__favoriteButton--active:hover {
+    background: linear-gradient(135deg, #c44569, #8e44ad);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(196, 69, 105, 0.5);
+}
+
+.movie__watchButton {
+    background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+}
+
+.movie__watchButton:hover {
+    background: linear-gradient(135deg, #3a7bd5, #00b4db);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(58, 123, 213, 0.4);
+}
+
+.movie__Button i {
+    font-size: 16px;
+}
+
+/* Responsive Design for Buttons */
+@media (max-width: 768px) {
+    .movie__buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+    
+    .movie__Button {
+        width: 180px;
+        padding: 0.7rem 1.5rem;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .movie__Button {
+        width: 160px;
+        padding: 0.6rem 1rem;
+        font-size: 12px;
+    }
+    
+    .movie__Button i {
+        font-size: 14px;
+    }
 }
 
 

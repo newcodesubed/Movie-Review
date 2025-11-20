@@ -93,22 +93,21 @@ export default function MovieDetail() {
                 ))}
               </div>
 
-              {/* Add to Favorites Button */}
-              <button
-                onClick={handleToggleFavorite}
-                style={{
-                  marginTop: "10px",
-                  padding: "10px 20px",
-                  fontSize: "16px",
-                  cursor: "pointer",
-                  backgroundColor: isFavorite ? "#ff4c4c" : "#007bff",
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: "5px",
-                }}
-              >
-                {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-              </button>
+              {/* Action Buttons */}
+              <div className="movie__buttons">
+                <button
+                  onClick={handleToggleFavorite}
+                  className={`movie__Button ${isFavorite ? 'movie__favoriteButton--active' : 'movie__favoriteButton'}`}
+                >
+                  <i className={`fas ${isFavorite ? 'fa-heart' : 'fa-heart'}`}></i>
+                  {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
+                </button>
+                
+                <button className="movie__Button movie__watchButton">
+                  <i className="fas fa-play"></i>
+                  Watch Now
+                </button>
+              </div>
             </div>
 
             <div className="movie__detailRightBottom">
