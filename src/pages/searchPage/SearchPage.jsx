@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import Card from '../../components/cards/Card';
+import Header from '../../components/header/Header';
 
 export default function SearchPage() {
   const location = useLocation();
-  const navigate = useNavigate();
   const query = location.state?.query || new URLSearchParams(location.search).get('q') || '';
   const [results, setResults] = useState(location.state?.results || []);
   const [loading, setLoading] = useState(!location.state?.results);
-
+  
   useEffect(() => {
     // If results already passed via navigate state, skip fetch
     if (location.state?.results) return;
@@ -23,10 +23,13 @@ export default function SearchPage() {
       .finally(() => setLoading(false));
   }, [query, location.state]);
 
+    
   return (
+    <>
+    <Header  />
     <div style={{ padding: 20 }}>
-      <button onClick={() => navigate(-1)}>← Back</button>
-      <h2>Search results for "{query}"</h2>
+      
+      <h2 style={{color:"white"}}>Search results for "{query}"</h2>
 
       {loading && <p>Loading...</p>}
       {!loading && results.length === 0 && <p>No results found.</p>}
@@ -35,5 +38,6 @@ export default function SearchPage() {
         {results.map(movie => <Card key={movie.id} movie={movie} />)}
       </div>
     </div>
+    </>
   );
 }
