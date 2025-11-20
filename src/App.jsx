@@ -1,20 +1,19 @@
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import Header from './components/header/Header';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/home/Home';
 import MovieDetail from './pages/movieDetail/MovieDetail';
+import SearchPage from './pages/searchPage/SearchPage';
+
 export default function App() {
   return (
-    <div className="App">
-      <Router>
-        <Header />
-        <Routes>
-          <Route index element={<Home />} />
-          <Route path="movie/:id" element={<MovieDetail />} />
-          <Route path="movies/:type" element={<h1>Movie List page</h1>} />
-          <Route path="movie/favorite" element={<h1>Favorite Movies</h1>} />
-          <Route path="/*" element={<h1>404 Not Found</h1>} />
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="movie/:id" element={<MovieDetail />} />
+        <Route path="search" element={<SearchPage />} />
+        <Route path="movies/:type" element={<div style={{color: 'white', textAlign: 'center', padding: '50px', fontSize: '2rem'}}><h1>Movie List page</h1></div>} />
+        <Route path="movie/favorite" element={<div style={{color: 'white', textAlign: 'center', padding: '50px', fontSize: '2rem'}}><h1>Favorite Movies</h1></div>} />
+        <Route path="/*" element={<div style={{color: 'white', textAlign: 'center', padding: '50px', fontSize: '2rem'}}><h1>404 Not Found</h1></div>} />
+      </Routes>
+    </Router>
   );
 }

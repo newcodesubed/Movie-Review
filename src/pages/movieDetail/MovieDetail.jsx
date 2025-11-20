@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react"
 import "./MovieDetail.css"
 import { useParams } from "react-router-dom"
+import Header from "../../components/header/Header"
 
 
 export default function MovieDetail() {
@@ -24,6 +25,8 @@ export default function MovieDetail() {
     
 
     return (
+        <>
+        <Header />
         <div className="movie">
             <div className="movie__intro">
                 <img className="movie__backdrop" src={`https://image.tmdb.org/t/p/original${currentMovieDetail ? currentMovieDetail.backdrop_path : ""}`} />
@@ -65,6 +68,7 @@ export default function MovieDetail() {
             </div>
             
         </div>
+        </>
     )
 }
 
