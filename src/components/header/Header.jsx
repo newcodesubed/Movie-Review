@@ -1,7 +1,15 @@
 import React from "react";
 import "./Header.css";
 import { Link } from "react-router-dom";
-export default function Header() {
+import Search from "../search/Search";
+
+export default function Header({ onSearch }) {
+  const handleSearch = (searchTerm) => {
+    if (onSearch) {
+      onSearch(searchTerm);
+    }
+  };
+
   return (
     <div className="header">
         <div className="headerLeft">
@@ -15,7 +23,14 @@ export default function Header() {
             <span>Genre</span>
         </Link>
         </div>
-      
+        
+        <div className="headerCenter">
+          <Search onSearch={handleSearch} placeholder="Search movies..." />
+        </div>
+        
+        <div className="headerRight">
+          
+        </div>
     </div>
   );
 }

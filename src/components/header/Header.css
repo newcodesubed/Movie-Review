@@ -3,14 +3,25 @@
     padding: .5rem 0;
     align-items: center;
     display: flex;
-    justify-content:space-between;
-    
+    justify-content: space-between;
+    gap: 20px;
 }
 
 .headerLeft, .headerRight {
     display: flex;
     align-items: center;
+    flex: 1;
+}
 
+.headerCenter {
+    display: flex;
+    justify-content: center;
+    flex: 2;
+    max-width: 500px;
+}
+
+.headerRight {
+    justify-content: flex-end;
 }
 
 a > span{
@@ -31,4 +42,44 @@ a > span:hover {
 
 .user__avatar {
     font-size: 2rem;
+}
+
+
+@media (max-width: 768px) {
+    .header {
+        margin: 0 1rem;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .headerLeft {
+        order: 1;
+    }
+    
+    .headerCenter {
+        order: 2;
+        flex: none;
+        width: 100%;
+        max-width: none;
+    }
+    
+    .headerRight {
+        order: 3;
+    }
+    
+    a > span {
+        margin: 0 15px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        margin: 0 0.5rem;
+    }
+    
+    a > span {
+        margin: 0 10px;
+        font-size: 1rem;
+    }
 }
