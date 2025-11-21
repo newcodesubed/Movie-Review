@@ -53,21 +53,55 @@ export default function MovieDetail() {
       <Header />
       <div className="movie">
         <div className="movie__intro">
-          <img
-            className="movie__backdrop"
-            src={`https://image.tmdb.org/t/p/original${currentMovieDetail.backdrop_path}`}
-            alt={currentMovieDetail.original_title}
-          />
+          {currentMovieDetail.backdrop_path ? (
+            <img
+              className="movie__backdrop"
+              src={`https://image.tmdb.org/t/p/original${currentMovieDetail.backdrop_path}`}
+              alt={currentMovieDetail.original_title}
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextSibling.style.display = 'flex';
+              }}
+            />
+          ) : null}
+          <div 
+            className="movie__backdrop-placeholder"
+            style={{
+              display: currentMovieDetail.backdrop_path ? 'none' : 'flex'
+            }}
+          >
+            <div className="placeholder-content">
+              <i className="fas fa-image"></i>
+              <span>Backdrop Not Available</span>
+            </div>
+          </div>
         </div>
 
         <div className="movie__detail">
           <div className="movie__detailLeft">
             <div className="movie__posterBox">
-              <img
-                className="movie__poster"
-                src={`https://image.tmdb.org/t/p/original${currentMovieDetail.poster_path}`}
-                alt={currentMovieDetail.original_title}
-              />
+              {currentMovieDetail.poster_path ? (
+                <img
+                  className="movie__poster"
+                  src={`https://image.tmdb.org/t/p/original${currentMovieDetail.poster_path}`}
+                  alt={currentMovieDetail.original_title}
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
+                />
+              ) : null}
+              <div 
+                className="movie__poster-placeholder"
+                style={{
+                  display: currentMovieDetail.poster_path ? 'none' : 'flex'
+                }}
+              >
+                <div className="placeholder-content">
+                  <i className="fas fa-film"></i>
+                  <span>Poster Not Available</span>
+                </div>
+              </div>
             </div>
           </div>
 
