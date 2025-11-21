@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Card from '../../components/cards/Card';
-import Header from '../../components/header/Header';
+import NavHeader from '../../components/header/NavHeader';
 
 export default function SearchPage() {
   const location = useLocation();
@@ -26,7 +26,7 @@ export default function SearchPage() {
     
   return (
     <>
-    <Header  />
+    <NavHeader  />
     <div style={{ padding: 20 }}>
       
       <h2 style={{color:"white"}}>Search results for "{query}"</h2>
