@@ -1,15 +1,51 @@
 .movie__list {
-    padding: 0 3rem 3rem 3rem;
+  padding: 0 3rem 3rem 3rem;
 }
 
 .list__title {
-    color: white;
-font-size: 1.75rem;
-margin:  2.5rem;
+  color: white;
+  font-size: 1.75rem;
+  margin: 2.5rem;
 }
 
 .list__cards {
-    display: flex;
-    flex-wrap: wrap ;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.loading,
+.error {
+  text-align: center;
+  color: white;
+  font-size: 1.3rem;
+  margin-top: 1rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 2rem;
+}
+
+.pagination button {
+  padding: 8px 18px;
+  font-size: 1rem;
+  background: #e50914;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination button:disabled {
+  background: #555;
+  cursor: not-allowed;
+}
+
+.page-number {
+  color: white;
+  font-size: 1.2rem;
 }

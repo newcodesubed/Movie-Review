@@ -1,41 +1,74 @@
-import React, {useEffect, useState} from "react"
-import "./MovieList.css"
-// import { useParams } from "react-router-dom"
-import Cards from "../cards/Card"
+import React, { useEffect, useState } from "react";
+import "./MovieList.css";
+import Cards from "../cards/Card";
 
 const MovieList = () => {
-    
-    const [movieList, setMovieList] = useState([])
-    
-    
-    const getData = () => {
-        // fetch('https://api.themoviedb.org/3/account/22484729/lists?page=1')
+  const [movieList, setMovieList] = useState([]);
+  const [page, setPage] = useState(1);       // current page
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-        fetch(`https://api.themoviedb.org/3/movie/${"top_rated"}?api_key=4e44d9029b1270a757cddc766a1bcb63&language=en-US`)
-        .then(res => res.json())
-        .then(data => setMovieList(data.results))
+  const getData = async () => {
+    try {
+      setLoading(true);
+      setError("");
+
+      const res = await fetch(
+        `https://api.themoviedb.org/3/movie/top_rated?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=${page}`
+      );
+
+      if (!res.ok) throw new Error("Failed to fetch movies");
+
+      const data = await res.json();
+
+      
+      setMovieList(data.results.slice(0, 10));
+
+    } catch (err) {
+      setError(err.message || "Something went wrong.");
+    } finally {
+      setLoading(false);
     }
-    
-    useEffect(() => {
-        getData()
-    }, [])
+  };
 
-    
+  useEffect(() => {
+  getData();
+  setTimeout(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, 50);
+}, [page]);
 
-    
+  return (
+    <div className="movie__list">
+      <h2 className="list__title">TOP RATED</h2>
 
-    return (
-        <div className="movie__list">
-            <h2 className="list__title">{("top rated").toUpperCase()}</h2>
-            <div className="list__cards">
-                {
-                    movieList.map(movie => (
-                        <Cards movie={movie} />
-                    ))
-                }
-            </div>
-        </div>
-    )
-}
+      {loading && <p className="loading">Loading movies...</p>}
+      {error && <p className="error">{error}</p>}
 
-export default MovieList
+      <div className="list__cards">
+        {!loading && !error && 
+          movieList.map((movie) => <Cards key={movie.id} movie={movie} />)
+        }
+      </div>
+
+      <div className="pagination">
+        <button 
+          onClick={() => setPage((p) => Math.max(1, p - 1))}
+          disabled={page === 1}
+        >
+          Prev
+        </button>
+
+        <span className="page-number">Page {page}</span>
+
+        <button 
+          onClick={() => setPage((p) => p + 1)}
+        >
+          Next
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default MovieList;
