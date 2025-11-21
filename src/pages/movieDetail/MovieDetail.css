@@ -295,7 +295,220 @@
     }
 }
 
+
+@media (max-width: 992px) {
+    .movie__intro {
+        width: 95%;
+    }
+    
+    .movie__backdrop,
+    .movie__backdrop-placeholder {
+        height: 600px;
+    }
+    
+    .movie__detail {
+        width: 90%;
+        bottom: 200px;
+        padding: 30px;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .movie__detailLeft {
+        margin-right: 0;
+        margin-bottom: 30px;
+    }
+    
+    .movie__poster,
+    .movie__poster-placeholder {
+        width: 250px;
+        height: 375px;
+    }
+    
+    .movie__detailRight {
+        width: 100%;
+        height: auto;
+    }
+    
+    .movie__name {
+        font-size: 2.5rem;
+    }
+    
+    .synopsisText {
+        font-size: 1.3rem;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .movie__intro {
+        width: 100%;
+    }
+    
+    .movie__backdrop,
+    .movie__backdrop-placeholder {
+        height: 400px;
+    }
+    
+    .movie__backdrop-placeholder .placeholder-content i {
+        font-size: 3rem;
+    }
+    
+    .movie__backdrop-placeholder .placeholder-content span {
+        font-size: 1.2rem;
+    }
+    
+    .movie__detail {
+        width: 95%;
+        bottom: 100px;
+        padding: 20px;
+        flex-direction: column;
+    }
+    
+    .movie__detailRight {
+        text-align: left;
+    }
+    
+    .movie__detailLeft {
+        margin-bottom: 25px;
+    }
+    
+    .movie__poster,
+    .movie__poster-placeholder {
+        width: 200px;
+        height: 300px;
+    }
+    
+    .movie__name {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    
+    .movie__rating,
+    .movie__runtime,
+    .movie__releaseDate {
+        font-size: 0.9rem;
+    }
+    
+    .movie__genres {
+        margin: 1rem 0;
+    }
+    
+    .movie__genre {
+        padding: 0.4rem 0.8rem;
+        margin: 0.2rem;
+        font-size: 0.8rem;
+    }
+    
+    .synopsisText {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .movie__detailRightBottom {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    
+    .movie__buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin-top: 15px;
+    }
+    
+    .movie__Button {
+        width: 180px;
+        padding: 0.7rem 1.5rem;
+        font-size: 13px;
+    }
+}
+
+
 @media (max-width: 480px) {
+    .movie__backdrop,
+    .movie__backdrop-placeholder {
+        height: 300px;
+    }
+    
+    .movie__backdrop-placeholder .placeholder-content i {
+        font-size: 2.5rem;
+    }
+    
+    .movie__backdrop-placeholder .placeholder-content span {
+        font-size: 1rem;
+    }
+    
+    .movie__detail {
+        width: 100%;
+        bottom: 50px;
+        padding: 15px;
+    }
+    
+    .movie__detailLeft {
+        margin-bottom: 20px;
+    }
+    
+    .movie__poster,
+    .movie__poster-placeholder {
+        width: 160px;
+        height: 240px;
+    }
+    
+    .movie__poster-placeholder .placeholder-content i {
+        font-size: 2rem;
+    }
+    
+    .movie__poster-placeholder .placeholder-content span {
+        font-size: 0.8rem;
+    }
+    
+    .movie__name {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .movie__tagline {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .movie__rating,
+    .movie__runtime,
+    .movie__releaseDate {
+        font-size: 0.8rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    .movie__voteCount {
+        margin-left: 0.5rem;
+    }
+    
+    .movie__genres {
+        margin: 0.8rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 0.3rem;
+    }
+    
+    .movie__genre {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.7rem;
+        margin: 0;
+    }
+    
+    .synopsisText {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .movie__detailRightBottom {
+        font-size: 0.8rem;
+        line-height: 1.4;
+        margin: 1rem 0;
+    }
+    
     .movie__Button {
         width: 160px;
         padding: 0.6rem 1rem;
@@ -304,6 +517,40 @@
     
     .movie__Button i {
         font-size: 14px;
+    }
+}
+
+
+@media (max-width: 360px) {
+    .movie__backdrop,
+    .movie__backdrop-placeholder {
+        height: 250px;
+    }
+    
+    .movie__detail {
+        bottom: 30px;
+        padding: 10px;
+    }
+    
+    .movie__poster,
+    .movie__poster-placeholder {
+        width: 140px;
+        height: 210px;
+    }
+    
+    .movie__name {
+        font-size: 1.3rem;
+    }
+    
+    .movie__genre {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.65rem;
+    }
+    
+    .movie__Button {
+        width: 140px;
+        padding: 0.5rem 0.8rem;
+        font-size: 11px;
     }
 }
 

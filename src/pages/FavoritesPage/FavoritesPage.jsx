@@ -49,7 +49,7 @@ export default function FavoritesPage() {
     <>
       <Header onSearch={handleSearch} />
       <div className="favorites-page">
-        <h2 style={{ padding: "20px" }}>Your Favorite Movies</h2>
+        <h2 style={{ padding: "20px", color:"white" }}>Your Favorite Movies</h2>
         <div className="movie-grid">
           {favorites.map((movie) => (
             <Card key={movie.id} movie={movie} />

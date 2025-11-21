@@ -64,7 +64,7 @@ export default function Header() {
             onClick={handleGenreClick}
             className="genreLabel"
           >
-            Genre ▾
+            Genre
           </span>
 
           {showDropdown && (

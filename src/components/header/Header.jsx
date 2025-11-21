@@ -67,7 +67,7 @@ export default function Header({ onSearch }) {
             onClick={handleGenreClick}
             className="genreLabel"
           >
-            Genre ▾
+            Genre
           </span>
 
           {showDropdown && (
