@@ -32,15 +32,48 @@
     justify-content: flex-end;
 }
 
-a > span{
+.headerLeft a {
+    text-decoration: none;
+}
+
+.headerLeft span:not(.logo) {
     margin: 0 30px;
     font-size: 1.3rem;
     cursor: pointer;
     color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border: 1px solid transparent;
 }
 
-a > span:hover {
-    color: red;
+.headerLeft span:not(.logo):hover {
+    color: #ff0000;
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.genreLabel {
+    margin: 0 30px;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    border: 1px solid transparent;
+    position: relative;
+    display: inline-block;
+}
+
+.genreLabel:hover {
+    color: #ff0000;
+    background: rgba(255, 0, 0, 0.1);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    transform: translateY(-2px);
 }
 
 .header__icon {
@@ -51,29 +84,89 @@ a > span:hover {
 .user__avatar {
     font-size: 2rem;
 }
-.genreLabel{
-    cursor: pointer;
-    color: white;
-    font-size: 1.1rem;
-    margin-right: 10px;
-}
 .genreDropdown {
-  position: absolute;
-  top: 60px;
-  background: #111;
-  padding: 10px;
-  border-radius: 8px;
-  z-index: 1000;
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+  max-width: 1200px;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(15px);
+  padding: 30px;
+  border-radius: 20px;
+  z-index: 999999;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  animation: dropdownSlide 0.3s ease-out;
+}
+
+.genreDropdown h3 {
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+  padding-bottom: 15px;
+}
+
+.genreGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .genreOption {
-  padding: 6px 12px;
+  padding: 12px 20px;
   cursor: pointer;
   color: white;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  text-align: center;
+  font-weight: 500;
 }
 
 .genreOption:hover {
-  background: #333;
+  background: rgba(255, 0, 0, 0.2);
+  border-color: rgba(255, 0, 0, 0.5);
+  color: #ff0000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+}
+
+/* Custom scrollbar for genre grid */
+.genreGrid::-webkit-scrollbar {
+    width: 6px;
+}
+
+.genreGrid::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.genreGrid::-webkit-scrollbar-thumb {
+    background: rgba(255, 0, 0, 0.5);
+    border-radius: 3px;
+}
+
+.genreGrid::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 0, 0, 0.7);
+}
+
+/* Dropdown animation */
+@keyframes dropdownSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
 }
 
 @media (max-width: 768px) {
@@ -85,6 +178,7 @@ a > span:hover {
     
     .headerLeft {
         order: 1;
+        justify-content: center;
     }
     
     .headerCenter {
@@ -98,9 +192,21 @@ a > span:hover {
         order: 3;
     }
     
-    a > span {
+    .headerLeft span:not(.logo),
+    .genreLabel {
         margin: 0 15px;
         font-size: 1.1rem;
+        padding: 6px 12px;
+    }
+    
+    .genreDropdown {
+        width: 90%;
+        padding: 20px;
+    }
+    
+    .genreGrid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
     }
 }
 
@@ -109,8 +215,25 @@ a > span:hover {
         margin: 0 0.5rem;
     }
     
-    a > span {
-        margin: 0 10px;
+    .headerLeft span:not(.logo),
+    .genreLabel {
+        margin: 0 8px;
         font-size: 1rem;
+        padding: 5px 10px;
+    }
+    
+    .genreDropdown {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .genreGrid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 8px;
+    }
+    
+    .genreOption {
+        padding: 10px 15px;
+        font-size: 0.9rem;
     }
 }

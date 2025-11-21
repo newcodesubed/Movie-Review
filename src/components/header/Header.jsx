@@ -7,7 +7,6 @@ export default function Header({ onSearch }) {
    const navigate = useNavigate();
   const [genres, setGenres] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
-  const [dropdownPosition, setDropdownPosition] = useState({ top: 80, left: 0 });
   const genreRef = useRef(null);
   
   const handleSearch = (searchTerm) => {
@@ -21,13 +20,6 @@ export default function Header({ onSearch }) {
   }, []);
 
   const handleGenreClick = () => {
-    if (genreRef.current) {
-      const rect = genreRef.current.getBoundingClientRect();
-      setDropdownPosition({
-        top: rect.bottom + 8,
-        left: rect.left
-      });
-    }
     setShowDropdown((p) => !p);
   };
 
@@ -77,22 +69,19 @@ export default function Header({ onSearch }) {
         </span>
 
         {showDropdown && (
-          <div 
-            className="genreDropdown"
-            style={{
-              top: `${dropdownPosition.top}px`,
-              left: `${dropdownPosition.left}px`
-            }}
-          >
-            {genres.map((g) => (
-              <div
-                key={g.id}
-                className="genreOption"
-                onClick={() => onGenreSelect(g.id)}
-              >
-                {g.name}
-              </div>
-            ))}
+          <div className="genreDropdown">
+            <h3>Browse by Genre</h3>
+            <div className="genreGrid">
+              {genres.map((g) => (
+                <div
+                  key={g.id}
+                  className="genreOption"
+                  onClick={() => onGenreSelect(g.id)}
+                >
+                  {g.name}
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </div>
