@@ -197,43 +197,87 @@
 }
 
 .movie__favoriteButton {
-    background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+    background: transparent;
     color: white;
-    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
 }
 
 .movie__favoriteButton:hover {
-    background: linear-gradient(135deg, #ee5a52, #dc4c64);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 107, 107, 0.6);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.3);
+}
+
+.movie__favoriteButton:hover i {
+    color: #ff6b6b;
+    transform: scale(1.1);
 }
 
 .movie__favoriteButton--active {
-    background: linear-gradient(135deg, #ff4757, #c44569);
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.2), rgba(238, 90, 82, 0.2));
+    border: 2px solid #ff6b6b;
     color: white;
-    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
 }
 
 .movie__favoriteButton--active:hover {
-    background: linear-gradient(135deg, #c44569, #8e44ad);
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.3), rgba(238, 90, 82, 0.3));
+    border-color: #ff4757;
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(196, 69, 105, 0.5);
+    box-shadow: 0 6px 20px rgba(255, 71, 87, 0.5);
+}
+
+.movie__favoriteButton--active i {
+    color: #ff6b6b;
+    animation: heartBeat 0.6s ease-in-out;
+}
+
+.movie__favoriteButton i {
+    transition: all 0.3s ease;
+    font-size: 18px;
 }
 
 .movie__watchButton {
-    background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+    background: linear-gradient(135deg, #ff0000, #cc0000);
     color: white;
-    box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
+    border: 2px solid transparent;
 }
 
 .movie__watchButton:hover {
-    background: linear-gradient(135deg, #3a7bd5, #00b4db);
+    background: linear-gradient(135deg, #cc0000, #990000);
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(58, 123, 213, 0.4);
+    box-shadow: 0 6px 20px rgba(255, 0, 0, 0.6);
+}
+
+.movie__watchButton i {
+    margin-right: 2px;
 }
 
 .movie__Button i {
     font-size: 16px;
+}
+
+/* Heart Animation */
+@keyframes heartBeat {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.2);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    75% {
+        transform: scale(1.15);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
 /* Responsive Design for Buttons */

@@ -129,17 +129,17 @@ export default function MovieDetail() {
 
               {/* Action Buttons */}
               <div className="movie__buttons">
-                <button
-                  onClick={handleToggleFavorite}
-                  className={`movie__Button ${isFavorite ? 'movie__favoriteButton--active' : 'movie__favoriteButton'}`}
-                >
-                  <i className={`fas ${isFavorite ? 'fa-heart' : 'fa-heart'}`}></i>
-                  {isFavorite ? "Remove from Favorites" : "Add to Favorites"}
-                </button>
-                
                 <button className="movie__Button movie__watchButton">
                   <i className="fas fa-play"></i>
                   Watch Now
+                </button>
+                
+                <button
+                  onClick={handleToggleFavorite}
+                  className={`movie__Button movie__favoriteButton ${isFavorite ? 'movie__favoriteButton--active' : ''}`}
+                >
+                  <i className={`${isFavorite ? 'fas' : 'far'} fa-heart`}></i>
+                  Favorite
                 </button>
               </div>
             </div>
