@@ -4,7 +4,7 @@ import Cards from "../cards/Card";
 
 const MovieList = () => {
   const [movieList, setMovieList] = useState([]);
-  const [page, setPage] = useState(1);       // current page
+  const [page, setPage] = useState(1);       
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 

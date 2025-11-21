@@ -7,14 +7,14 @@ export default function GenrePage() {
   const { genreId } = useParams();
 
   const [movies, setMovies] = useState([]);
-  const [page, setPage] = useState(1);   // ✅ page state
+  const [page, setPage] = useState(1);   
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
-  // 🔥 Fetch movies every time genreId OR page changes
+  
   useEffect(() => {
     const getMovies = async () => {
       try {
@@ -43,7 +43,7 @@ export default function GenrePage() {
     getMovies();
   }, [genreId, page]);
 
-  // 🔍 Search handler
+  
   const handleSearch = useCallback(
     async (query) => {
       if (!query) return;
@@ -77,15 +77,14 @@ export default function GenrePage() {
       <div style={{ padding: "20px" }}>
         <h2>Genre Results</h2>
 
-        {/* ERROR */}
+ 
         {error && (
           <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>
         )}
 
-        {/* LOADING */}
+
         {loading && <p>Loading...</p>}
 
-        {/* MOVIE GRID */}
         <div className="movie-list">
           {!loading &&
             !error &&
@@ -94,7 +93,7 @@ export default function GenrePage() {
             ))}
         </div>
 
-        {/* PAGINATION */}
+
         {!loading && !error && movies.length > 0 && (
           <div style={{ marginTop: "20px", display: "flex", justifyContent: "center", gap: "10px" }}>
             <button
