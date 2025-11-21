@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Card from "../../components/cards/Card";
 import Header from "../../components/header/Header";
 import "./GenrePage.css";
+import Footer from "../../components/footer/Footer";
 
 export default function GenrePage() {
   const { genreId } = useParams();
@@ -144,6 +145,7 @@ export default function GenrePage() {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 }

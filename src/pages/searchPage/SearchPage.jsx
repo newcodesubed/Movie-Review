@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Card from '../../components/cards/Card';
 import NavHeader from '../../components/header/NavHeader';
+import Footer from '../../components/footer/Footer';
 
 export default function SearchPage() {
   const location = useLocation();
@@ -120,6 +121,7 @@ export default function SearchPage() {
           </div>
         )}
       </div>
+      <Footer />
     </>
   );
 }

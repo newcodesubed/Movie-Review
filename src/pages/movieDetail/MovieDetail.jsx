@@ -2,6 +2,7 @@ import React, {  useEffect, useState } from "react";
 import "./MovieDetail.css";
 import {  useParams } from "react-router-dom";
 import NavHeader from "../../components/header/NavHeader";
+import Footer from "../../components/footer/Footer";
 
 export default function MovieDetail() {
   const [currentMovieDetail, setMovie] = useState();
@@ -153,6 +154,7 @@ export default function MovieDetail() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

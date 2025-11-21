@@ -5,6 +5,7 @@ import { Carousel } from 'react-responsive-carousel';
 import { Link, useNavigate } from 'react-router-dom';
 import MovieList from '../../components/moiveList/MovieList';
 import Header from '../../components/header/Header';
+import Footer from '../../components/footer/Footer';
 
 export default function Home() {
   const [popularMovies, setPopularMovies] = useState([]);
@@ -85,6 +86,7 @@ export default function Home() {
 
         <MovieList />
       </div>
+      <Footer />
     </>
   );
 }

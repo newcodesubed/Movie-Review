@@ -3,6 +3,7 @@ import Header from "../../components/header/Header";
 import Card from "../../components/cards/Card";
 import "./FavoritesPage.css";
 import { useNavigate } from "react-router-dom";
+import Footer from "../../components/footer/Footer";
 
 export default function FavoritesPage() {
   const [favorites, setFavorites] = useState([]);
@@ -42,6 +43,7 @@ export default function FavoritesPage() {
           <h2>No favorite movies yet.</h2>
           <p>Go to Home or Search to add some movies to your favorites!</p>
         </div>
+        <Footer />
       </>
     );
 
@@ -56,6 +58,7 @@ export default function FavoritesPage() {
           ))}
         </div>
       </div>
+      <Footer />
     </>
   );
 }
