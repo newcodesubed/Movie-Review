@@ -27,7 +27,28 @@ export default function Card({movie}) {
         :
         <Link to={`/movie/${movie.id}`} style={{textDecoration:"none", color:"white"}}>
             <div className="cards">
-                <img className="cards__img" src={`https://image.tmdb.org/t/p/original${movie?movie.poster_path:""}`} />
+                {movie?.poster_path ? (
+                    <img 
+                        className="cards__img" 
+                        src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} 
+                        alt={movie.original_title}
+                        onError={(e) => {
+                            e.target.style.display = 'none';
+                            e.target.nextSibling.style.display = 'flex';
+                        }}
+                    />
+                ) : null}
+                <div 
+                    className="cards__img-placeholder"
+                    style={{
+                        display: movie?.poster_path ? 'none' : 'flex'
+                    }}
+                >
+                    <div className="placeholder-content">
+                        <i className="fas fa-film"></i>
+                        <span>No Image</span>
+                    </div>
+                </div>
                 <div className="cards__overlay">
                     <div className="card__title">{movie?movie.original_title:""}</div>
                     <div className="card__runtime">
