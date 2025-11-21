@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Card from "../../components/cards/Card";
 import Header from "../../components/header/Header";
+import "./GenrePage.css";
 
 export default function GenrePage() {
   const { genreId } = useParams();
@@ -11,10 +12,31 @@ export default function GenrePage() {
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [genreName, setGenreName] = useState("");
 
   const navigate = useNavigate();
 
-  
+  useEffect(() => {
+    const fetchGenreName = async () => {
+      try {
+        const res = await fetch(
+          `https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_API_KEY}`
+        );
+        const data = await res.json();
+        const genre = data.genres.find(g => g.id === parseInt(genreId));
+        if (genre) {
+          setGenreName(genre.name);
+        }
+      } catch (err) {
+        console.error("Failed to fetch genre name:", err);
+      }
+    };
+
+    if (genreId) {
+      fetchGenreName();
+    }
+  }, [genreId]);
+
   useEffect(() => {
     const getMovies = async () => {
       try {
@@ -30,7 +52,8 @@ export default function GenrePage() {
         if (!res.ok) throw new Error("Failed to fetch movies");
 
         const data = await res.json();
-        setMovies(data.results || []);
+        
+        setMovies(data.results.slice(0, 10) || []);
         setTotalPages(data.total_pages || 1);
       } catch (err) {
         console.error(err);
@@ -40,7 +63,9 @@ export default function GenrePage() {
       }
     };
 
-    getMovies();
+    if (genreId) {
+      getMovies();
+    }
   }, [genreId, page]);
 
   
@@ -71,21 +96,19 @@ export default function GenrePage() {
   );
 
   return (
-    <>
+    <div className="genre-page">
       <Header onSearch={handleSearch} />
 
-      <div style={{ padding: "20px" }}>
-        <h2>Genre Results</h2>
+      <div className="genre-container">
+        <h2 className="genre-title">{genreName ? `${genreName} Movies` : "Genre Movies"}</h2>
 
- 
         {error && (
-          <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>
+          <p className="genre-error">{error}</p>
         )}
 
+        {loading && <p className="genre-loading">Loading...</p>}
 
-        {loading && <p>Loading...</p>}
-
-        <div className="movie-list">
+        <div className="genre-movie-grid">
           {!loading &&
             !error &&
             movies.map((movie) => (
@@ -93,9 +116,8 @@ export default function GenrePage() {
             ))}
         </div>
 
-
         {!loading && !error && movies.length > 0 && (
-          <div style={{ marginTop: "20px", display: "flex", justifyContent: "center", gap: "10px" }}>
+          <div className="genre-pagination">
             <button
               disabled={page === 1}
               onClick={() => {
@@ -106,7 +128,7 @@ export default function GenrePage() {
               ◀ Prev
             </button>
 
-            <span style={{ color: "white", alignSelf: "center" }}>
+            <span className="genre-page-info">
               Page {page} / {totalPages}
             </span>
 
@@ -122,6 +144,6 @@ export default function GenrePage() {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 }

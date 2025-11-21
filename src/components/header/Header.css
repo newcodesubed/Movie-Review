@@ -69,6 +69,11 @@
     display: inline-block;
 }
 
+.genre-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
 .genreLabel:hover {
     color: #ff0000;
     background: rgba(255, 0, 0, 0.1);
@@ -85,20 +90,21 @@
     font-size: 2rem;
 }
 .genreDropdown {
-  position: fixed;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 75%;
-  max-width: 1200px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 500px;
+  max-width: 90vw;
   background: rgba(0, 0, 0, 0.95);
   backdrop-filter: blur(15px);
-  padding: 30px;
-  border-radius: 20px;
+  padding: 25px;
+  border-radius: 15px;
   z-index: 999999;
   border: 1px solid rgba(255, 0, 0, 0.3);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.1);
   animation: dropdownSlide 0.3s ease-out;
+  margin-top: 10px;
+  margin-top: 10px;
 }
 
 .genreDropdown h3 {
@@ -112,9 +118,9 @@
 
 .genreGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  max-height: 400px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-height: 350px;
   overflow-y: auto;
 }
 
@@ -138,7 +144,7 @@
   box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
 }
 
-/* Custom scrollbar for genre grid */
+
 .genreGrid::-webkit-scrollbar {
     width: 6px;
 }
@@ -157,15 +163,26 @@
     background: rgba(255, 0, 0, 0.7);
 }
 
-/* Dropdown animation */
+
 @keyframes dropdownSlide {
     from {
         opacity: 0;
-        transform: translateX(-50%) translateY(-20px);
+        transform: translateY(-10px) scale(0.95);
     }
     to {
         opacity: 1;
-        transform: translateX(-50%) translateY(0);
+        transform: translateY(0) scale(1);
+    }
+}
+
+@media (max-width: 992px) {
+    .genreDropdown {
+        width: 450px;
+        left: -100px;
+    }
+    
+    .genreGrid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -179,6 +196,7 @@
     .headerLeft {
         order: 1;
         justify-content: center;
+        position: relative;
     }
     
     .headerCenter {
@@ -200,12 +218,14 @@
     }
     
     .genreDropdown {
-        width: 90%;
+        width: 350px;
+        left: 50%;
+        transform: translateX(-50%);
         padding: 20px;
     }
     
     .genreGrid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
 }
@@ -223,12 +243,14 @@
     }
     
     .genreDropdown {
-        width: 95%;
+        width: 300px;
+        left: 50%;
+        transform: translateX(-50%);
         padding: 15px;
     }
     
     .genreGrid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        grid-template-columns: 1fr;
         gap: 8px;
     }
     

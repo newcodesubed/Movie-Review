@@ -23,11 +23,12 @@ export default function Header({ onSearch }) {
     setShowDropdown((p) => !p);
   };
 
-  // Close dropdown when clicking outside
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (genreRef.current && !genreRef.current.contains(event.target) && 
-          !event.target.closest('.genreDropdown')) {
+          !event.target.closest('.genreDropdown') &&
+          !event.target.closest('.genre-wrapper')) {
         setShowDropdown(false);
       }
     };
@@ -60,30 +61,32 @@ export default function Header({ onSearch }) {
           <span>Favorites</span>
         </Link>
 
-        <span
-          ref={genreRef}
-          onClick={handleGenreClick}
-          className="genreLabel"
-        >
-          Genre ▾
-        </span>
+        <div className="genre-wrapper">
+          <span
+            ref={genreRef}
+            onClick={handleGenreClick}
+            className="genreLabel"
+          >
+            Genre ▾
+          </span>
 
-        {showDropdown && (
-          <div className="genreDropdown">
-            <h3>Browse by Genre</h3>
-            <div className="genreGrid">
-              {genres.map((g) => (
-                <div
-                  key={g.id}
-                  className="genreOption"
-                  onClick={() => onGenreSelect(g.id)}
-                >
-                  {g.name}
-                </div>
-              ))}
+          {showDropdown && (
+            <div className="genreDropdown">
+              <h3>Browse by Genre</h3>
+              <div className="genreGrid">
+                {genres.map((g) => (
+                  <div
+                    key={g.id}
+                    className="genreOption"
+                    onClick={() => onGenreSelect(g.id)}
+                  >
+                    {g.name}
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
 
       <div className="headerCenter">
