@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "./MovieDetail.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Header from "../../components/header/Header";
 
 export default function MovieDetail() {
   const [currentMovieDetail, setMovie] = useState();
   const { id } = useParams();
+
 
   // Track if this movie is already a favorite
   const [isFavorite, setIsFavorite] = useState(false);
@@ -48,9 +49,10 @@ export default function MovieDetail() {
 
   if (!currentMovieDetail) return <p>Loading...</p>;
 
+
   return (
     <>
-      <Header />
+        <Header />
       <div className="movie">
         <div className="movie__intro">
           {currentMovieDetail.backdrop_path ? (
