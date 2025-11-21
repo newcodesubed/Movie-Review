@@ -129,7 +129,7 @@ export default function MovieDetail() {
                 ))}
               </div>
 
-              {/* Action Buttons */}
+              
               <div className="movie__buttons">
                 <button className="movie__Button movie__watchButton">
                   <i className="fas fa-play"></i>

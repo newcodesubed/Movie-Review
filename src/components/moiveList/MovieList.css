@@ -11,7 +11,7 @@
 .list__cards {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  gap: 12px;
   padding: 0 20px;
   margin-bottom: 2rem;
 }
@@ -72,14 +72,14 @@
 @media (max-width: 1200px) {
   .list__cards {
     grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    gap: 12px;
   }
 }
 
 @media (max-width: 992px) {
   .list__cards {
     grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    gap: 12px;
     padding: 0 15px;
   }
   
@@ -91,7 +91,7 @@
 @media (max-width: 768px) {
   .list__cards {
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    gap: 10px;
     padding: 0 10px;
   }
   
@@ -123,7 +123,7 @@
 @media (max-width: 480px) {
   .list__cards {
     grid-template-columns: 1fr;
-    gap: 15px;
+    gap: 10px;
     padding: 0 5px;
     justify-items: center;
   }

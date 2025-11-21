@@ -261,7 +261,7 @@
     font-size: 16px;
 }
 
-/* Heart Animation */
+
 @keyframes heartBeat {
     0% {
         transform: scale(1);
@@ -280,7 +280,7 @@
     }
 }
 
-/* Responsive Design for Buttons */
+
 @media (max-width: 768px) {
     .movie__buttons {
         flex-direction: column;
